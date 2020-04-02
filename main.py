@@ -5,10 +5,10 @@ if __name__ == "__main__":
     print("获取动态成功，ID为：" + Dynamic_id)
     print("正在获取转发数据中......\n")
     users = GetUsers(Dynamic_id)
-
+    total = GetTotalRepost(Dynamic_id)
     for index, user in enumerate(users):
-        print("[{}] {}({}) Hash({})\n评论:{}".format(index, user["uid"], user["name"], user["hash"], user["comment"]))
-
+        print("[{}] {}({}) Hash({})".format(index, user["uid"], user["name"], user["hash"]))
+    print("获取成功!获取到的转发人数(去重后):%i人, 实际转发人数:%i人, 相差%i人" % (len(users)-1, total, total-len(users)))
     lucky_num = input("\n---请粘贴随机数种子：---\n")
     lucky_num = hashlib.sha256(lucky_num.encode("utf-8")).hexdigest()
 
